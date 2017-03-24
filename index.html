@@ -55,7 +55,7 @@ var _hmt = _hmt || [];
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/assets/blogImg/litten.png" class="js-avatar">
+			<img src="/assets/blogImg/me.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">jinghong</a></h1>
@@ -70,6 +70,8 @@ var _hmt = _hmt || [];
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/photos">相册</a></li>
+	        
+				<li><a href="/about">关于</a></li>
 	        
 			</ul>
 		</nav>
@@ -89,11 +91,13 @@ var _hmt = _hmt || [];
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="https://github.com/litten" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/shaojinghong" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="http://weibo.com/litten225" title="weibo"><i class="icon-weibo"></i></a>
+					<a class="weibo" target="_blank" href="http://weibo.com/comment/inbox" title="weibo"><i class="icon-weibo"></i></a>
 		        
 					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		        
+					<a class="mail" target="_blank" href="/1637100519@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -111,7 +115,7 @@ var _hmt = _hmt || [];
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/assets/blogImg/litten.png" class="js-avatar">
+				<img src="/assets/blogImg/me.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">jinghong</h1>
@@ -125,27 +129,33 @@ var _hmt = _hmt || [];
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="https://github.com/litten" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/shaojinghong" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="http://weibo.com/litten225" title="weibo"><i class="icon-weibo"></i></a>
+						<a class="weibo" target="_blank" href="http://weibo.com/comment/inbox" title="weibo"><i class="icon-weibo"></i></a>
 			        
 						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+			        
+						<a class="mail" target="_blank" href="/1637100519@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/photos">相册</a></li>
+					<li style="width: 33.333333333333336%"><a href="/photos">相册</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/about">关于</a></li>
 		        
 				</ul>
 			</nav>
@@ -161,71 +171,6 @@ var _hmt = _hmt || [];
           </div>
           <div id="js-content" class="content-ll">
             
-  
-    <article id="page-hehh" class="article article-type-page  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/01/hehh/">Node.js（二）——模块和包</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/01/hehh/" class="archive-article-date">
-  	<time datetime="2016-11-30T16:02:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1490294802347&amp;di=b10b98c2cf88747063e49ec496a8c9df&amp;imgtype=0&amp;src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F77094b36acaf2edd9a034601891001e938019363.jpg" alt="这里写图片描述"></p>
-<p>这篇文章是Node.js第二篇，之所以要来写这些，是因为想把看过的书都记录下来，第一篇文章是从头开始讲Node.js——异步与事件驱动。<br>看的书名叫做《Node.js开发指南》<br>从元旦之后就给自己立了一个flag，每个星期看完以本书，最近比较闲，主要是花在这部书上的精力也还蛮多的吧，现在已经翻了1/4了，嗯，一个星期已经过去一半了，不知道能不能看完呀。闲话少说，来说重点吧。<br>
-        
-          <a class="article-more-a" href="/2016/12/01/hehh/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/nodejavascript/" class="article-tag-list-link color1">node javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/01/hehh/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
   
     <article id="page-hehh副本" class="article article-type-page  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -354,6 +299,71 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/12/01/hehh副本 2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="page-hehh" class="article article-type-page  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/01/hehh/">Node.js（二）——模块和包</a>
+    </h1>
+  
+
+        
+        <a href="/2016/12/01/hehh/" class="archive-article-date">
+  	<time datetime="2016-11-30T16:02:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1490294802347&amp;di=b10b98c2cf88747063e49ec496a8c9df&amp;imgtype=0&amp;src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F77094b36acaf2edd9a034601891001e938019363.jpg" alt="这里写图片描述"></p>
+<p>这篇文章是Node.js第二篇，之所以要来写这些，是因为想把看过的书都记录下来，第一篇文章是从头开始讲Node.js——异步与事件驱动。<br>看的书名叫做《Node.js开发指南》<br>从元旦之后就给自己立了一个flag，每个星期看完以本书，最近比较闲，主要是花在这部书上的精力也还蛮多的吧，现在已经翻了1/4了，嗯，一个星期已经过去一半了，不知道能不能看完呀。闲话少说，来说重点吧。<br>
+        
+          <a class="article-more-a" href="/2016/12/01/hehh/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/nodejavascript/" class="article-tag-list-link color1">node javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/01/hehh/">展开全文 >></a>
         </p>
       
 
