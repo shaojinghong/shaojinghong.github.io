@@ -6,13 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Node.js（二）——模块和包 | 景洪</title>
+  <title>Node.js（二）——模块和包 | 景洪的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="这篇文章是Node.js第二篇，之所以要来写这些，是因为想把看过的书都记录下来，第一篇文章是从头开始讲Node.js——异步与事件驱动。看的书名叫做《Node.js开发指南》从元旦之后就给自己立了一个flag，每个星期看完以本书，最近比较闲，主要是花在这部书上的精力也还蛮多的吧，现在已经翻了1/4了，嗯，一个星期已经过去一半了，不知道能不能看完呀。闲话少说，来说重点吧。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node.js（二）——模块和包">
 <meta property="og:url" content="http://yoursite.com/2016/12/01/hehh/index.html">
-<meta property="og:site_name" content="景洪">
+<meta property="og:site_name" content="景洪的个人博客">
 <meta property="og:description" content="这篇文章是Node.js第二篇，之所以要来写这些，是因为想把看过的书都记录下来，第一篇文章是从头开始讲Node.js——异步与事件驱动。看的书名叫做《Node.js开发指南》从元旦之后就给自己立了一个flag，每个星期看完以本书，最近比较闲，主要是花在这部书上的精力也还蛮多的吧，现在已经翻了1/4了，嗯，一个星期已经过去一半了，不知道能不能看完呀。闲话少说，来说重点吧。">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490294802347&di=b10b98c2cf88747063e49ec496a8c9df&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F77094b36acaf2edd9a034601891001e938019363.jpg">
 <meta property="og:image" content="http://img.blog.csdn.net/20170109112436638?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMjUxMjcwNDc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="这篇文章是Node.js第二篇，之所以要来写这些，是因为想把看过的书都记录下来，第一篇文章是从头开始讲Node.js——异步与事件驱动。看的书名叫做《Node.js开发指南》从元旦之后就给自己立了一个flag，每个星期看完以本书，最近比较闲，主要是花在这部书上的精力也还蛮多的吧，现在已经翻了1/4了，嗯，一个星期已经过去一半了，不知道能不能看完呀。闲话少说，来说重点吧。">
 <meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490294802347&di=b10b98c2cf88747063e49ec496a8c9df&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F77094b36acaf2edd9a034601891001e938019363.jpg">
   
-    <link rel="alternative" href="/atom.xml" title="景洪" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="景洪的个人博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/assets/img/favicon.ico">
@@ -55,14 +55,14 @@ var _hmt = _hmt || [];
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #ddd"></div>
+<div class="overlay" style="background: #913F3F"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			<img src="https://avatars2.githubusercontent.com/u/26305144?v=3&amp;s=460" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">jinghong</a></h1>
+		  <h1 class="header-author"><a href="/">null</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">记录、思考、总结</p>
@@ -73,7 +73,7 @@ var _hmt = _hmt || [];
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/photos">相册</a></li>
+				<li><a href="https://shaojinghong.github.io/Ghost-button-demo/">相册</a></li>
 	        
 				<li><a href="/about">关于</a></li>
 	        
@@ -112,7 +112,7 @@ var _hmt = _hmt || [];
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #ddd"></div>
+  	<div class="overlay js-overlay" style="background: #913F3F"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -122,7 +122,7 @@ var _hmt = _hmt || [];
 				<img src="https://avatars2.githubusercontent.com/u/26305144?v=3&amp;s=460" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">jinghong</h1>
+			  <h1 class="header-author js-header-author">null</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>记录、思考、总结<i class="icon icon-quo-right"></i></p>
@@ -157,7 +157,7 @@ var _hmt = _hmt || [];
 				
 					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/photos">相册</a></li>
+					<li style="width: 33.333333333333336%"><a href="https://shaojinghong.github.io/Ghost-button-demo/">相册</a></li>
 		        
 					<li style="width: 33.333333333333336%"><a href="/about">关于</a></li>
 		        
@@ -320,6 +320,15 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/2016/12/01/hehh副本/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Node.js（二）——模块和包
+        
+      </div>
+    </a>
+  
   
     <a href="/2016/12/01/hehh副本 2/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Node.js（二）——模块和包</div>
@@ -365,7 +374,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 jinghong
+    		&copy; 2017 景洪的个人博客
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
