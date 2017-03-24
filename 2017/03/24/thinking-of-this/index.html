@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>javascript中“this”的详细总结 | 景洪的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="javascript中的“this”——————————————————">
+  <meta name="description" content="javascript中的“this”">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript中“this”的详细总结">
 <meta property="og:url" content="http://yoursite.com/2017/03/24/thinking-of-this/index.html">
 <meta property="og:site_name" content="景洪的个人博客">
-<meta property="og:description" content="javascript中的“this”——————————————————">
+<meta property="og:description" content="javascript中的“this”">
 <meta property="og:image" content="http://onbhjgmre.bkt.clouddn.com/%E6%9C%AA%E6%A0%87%E9%A2%98-1.jpg">
-<meta property="og:updated_time" content="2017-03-24T12:19:18.000Z">
+<meta property="og:updated_time" content="2017-03-24T13:22:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中“this”的详细总结">
-<meta name="twitter:description" content="javascript中的“this”——————————————————">
+<meta name="twitter:description" content="javascript中的“this”">
 <meta name="twitter:image" content="http://onbhjgmre.bkt.clouddn.com/%E6%9C%AA%E6%A0%87%E9%A2%98-1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="景洪的个人博客" type="application/atom+xml">
@@ -193,8 +193,8 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onbhjgmre.bkt.clouddn.com/%E6%9C%AA%E6%A0%87%E9%A2%98-1.jpg" alt=""><br>javascript中的“this”<br>——————————————————<br><a id="more"></a></p>
-<p>这是在此博客写的第一篇文章，以前在wordpress写的文章有时间再转过来。大一大二没有写博客的习惯，倒是从大一折腾微信公众号，闲下来写写关于摄影的想法，经常拍了作品也往里放。大二下学期开始决心转计算机，还年轻梦想还是要有的，也谓之“不忘初心”。在学计算机的这一年中对我影响很大的是感悟出的一些学习方法和对知识的思考。我觉得和学本专业物理有所不同的是，对计算机知识的掌握程度不能出现“差不多理解了，似乎是这样的”。对接触到的本领域的知识要深度理解掌握，用起来才游刃有余。学计算机后对独立思考和总结开始重视了，继续加油，坚持把写博客当作一种对知识的巩固和深理解。</p>
+        <p><img src="http://onbhjgmre.bkt.clouddn.com/%E6%9C%AA%E6%A0%87%E9%A2%98-1.jpg" alt=""><br>javascript中的“this”<br><a id="more"></a></p>
+<p>星期五的下午和同学ci完菠菜面，顺便买了6块钱的菠萝回宿舍开始“搞代码”这是在此博客写的第一篇文章，以前在wordpress写的文章有时间再转过来。大一大二没有写博客的习惯，倒是从大一折腾微信公众号，闲下来写写关于摄影的想法，经常拍了作品也往里放。大二下学期开始决心转计算机，还年轻梦想还是要有的，也谓之“不忘初心”。在学计算机的这一年中对我影响很大的是感悟出的一些学习方法和对知识的思考。我觉得和学本专业物理有所不同的是，对计算机知识的掌握程度不能出现“差不多理解了，似乎是这样的”。对接触到的本领域的知识要深度理解掌握，用起来才游刃有余。学计算机后对独立思考和总结开始重视了，继续加油，坚持把写博客当作一种对知识的巩固和深理解。</p>
 <p>这一篇主要总结一下this：</p>
 <ul>
 <li>调用位置</li>
@@ -202,7 +202,11 @@ var _hmt = _hmt || [];
 <li>优先级</li>
 <li>绑定例外</li>
 </ul>
-<!--more-->
+<p>#this是什么？</p>
+<blockquote>
+<p>this是Javascript语言的一个关键字。<br>它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用。</p>
+</blockquote>
+<p>this是一个运行时才产生的对象，this提供了一个隐式的方式来传递一个对象引用.<br>来看一段经典坑代码：<br>```javascript<br>function foo(){<br>    var a=2;<br>    this.bar();<br>}<br>function bar(){<br>    console.log(this.a);<br>}<br><!--more--></p>
 
       
 
@@ -287,7 +291,7 @@ var _hmt = _hmt || [];
 <nav id="article-nav">
   
   
-    <a href="/2016/12/01/hehh/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/12/01/hehh副本 2/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Node.js（二）——模块和包</div>
       <i class="icon-circle-right"></i>
     </a>
