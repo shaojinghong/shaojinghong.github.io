@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="景洪的个人博客">
 <meta property="og:description" content="javascript中的“this”">
 <meta property="og:image" content="http://onbhjgmre.bkt.clouddn.com/%E6%9C%AA%E6%A0%87%E9%A2%98-1.jpg">
-<meta property="og:updated_time" content="2017-03-25T08:00:07.000Z">
+<meta property="og:updated_time" content="2017-03-25T12:11:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中“this”的详细总结">
 <meta name="twitter:description" content="javascript中的“this”">
@@ -201,18 +201,15 @@ var _hmt = _hmt || [];
 <li>绑定规则</li>
 <li>优先级</li>
 <li>绑定例外</li>
+<li>如何判断this</li>
 </ul>
 <h1 id="this是什么？"><a href="#this是什么？" class="headerlink" title="this是什么？"></a>this是什么？</h1><blockquote>
 <p>this是Javascript语言的一个关键字。<br>它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用。</p>
 </blockquote>
 <p>this既不指向函数自身也不指向函数的词法作用域，this的绑定在调用时发生，不在词法阶段产生，this指向什么只取决于函数在哪里被调用；</p>
-<h1 id="绑定规则："><a href="#绑定规则：" class="headerlink" title="绑定规则："></a>绑定规则：</h1><ol>
-<li><p>默认绑定：<br>函数独立调用：函数直接调用不带任何修饰时，此时将应用默认绑定；<br>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">	console.log(this.a);//输入1，此时this指向全局对象；</div><div class="line">&#125;</div><div class="line">var a=1;</div><div class="line">foo();</div></pre></td></tr></table></figure>
-</li>
-<li><p>隐式绑定：</p>
-</li>
-</ol>
+<h1 id="绑定规则："><a href="#绑定规则：" class="headerlink" title="绑定规则："></a>绑定规则：</h1><p>一、默认绑定：</p>
+<p>函数独立调用：函数直接调用不带任何修饰时，此时将应用默认绑定；<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">	console.log(this.a);//输入1，此时this指向全局对象；</div><div class="line">&#125;</div><div class="line">var a=1;</div><div class="line">foo();</div></pre></td></tr></table></figure></p>
+<p>二、 隐式绑定：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj=&#123;</div><div class="line">   <span class="attr">a</span>:<span class="number">3</span>,</div><div class="line">   <span class="attr">foo</span>:foo</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</div><div class="line">&#125;</div><div class="line">obj.foo();</div></pre></td></tr></table></figure>
 <p>foo函数的this，绑定到对象obj，obj对象中上下文调用了foo；<br>因此this.a===obj.a;</p>
 <p>在隐式绑定时，要注意隐式丢失的情况：</p>
@@ -230,9 +227,7 @@ var _hmt = _hmt || [];
 <li>隐式丢失3:<br>和情形2一样，只不过是把函数传入内置函数；<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj=&#123;</div><div class="line">	<span class="attr">a</span>:<span class="number">2</span>,</div><div class="line">	<span class="attr">foo</span>:foo</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</div><div class="line">setTimeout(obj.foo,<span class="number">1000</span>);</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<ol>
-<li>显式绑定：</li>
-</ol>
+<p>三、 显式绑定：</p>
 <blockquote>
 <p>每个函数都包含两个非继承来的方法：apply()、call();这两个函数的用途都是在特定的作用域中调用函数，实际上等于设置函数体内this对象的值</p>
 </blockquote>
@@ -254,6 +249,27 @@ var _hmt = _hmt || [];
 </ul>
 <!--more-->
 <p>输出结果都是2；    </p>
+<p>四、new绑定</p>
+<p>先思考下面代码，重点思考new的真正含义<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.a=<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">foo.b=<span class="number">3</span>;</div><div class="line"><span class="keyword">var</span> bar=<span class="keyword">new</span> foo();</div><div class="line"><span class="built_in">console</span>.log(bar.a);</div><div class="line"><span class="built_in">console</span>.log(bar.b);</div></pre></td></tr></table></figure></p>
+<p>输出结果：2，undefined</p>
+<blockquote>
+<p>new 构造函数只是一些使用new操作符时被调用的函数，它们并不属于某一个类，也不会实例化一个类，甚至都不能说他们是一个特殊的函数类型。他们只是被new操作符调用的普通函数而已；</p>
+</blockquote>
+<p>针对上述代码，new foo()；只是创建了一个新对象，这个新对象绑定到foo()调用中的this上。</p>
+<h1 id="四种绑定的优先级-new绑定-gt-显式绑定-gt-隐式绑定-gt-默认绑定"><a href="#四种绑定的优先级-new绑定-gt-显式绑定-gt-隐式绑定-gt-默认绑定" class="headerlink" title="四种绑定的优先级(new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定)"></a>四种绑定的优先级(new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定)</h1><p>当某一个调用位置可以应用多种绑定时，this到底绑定到哪里呢？</p>
+<ul>
+<li>显示绑定优先于隐式绑定：</li>
+</ul>
+<p>口说无凭，将隐式绑定和显式绑定加在同一个函数调用上做个实验试下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj_1=&#123;</div><div class="line">	<span class="attr">a</span>:<span class="number">1</span>,</div><div class="line">	<span class="attr">foo</span>:foo</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj_2=&#123;</div><div class="line">	<span class="attr">a</span>:<span class="number">2</span>,</div><div class="line">	<span class="attr">foo</span>:foo</div><div class="line">&#125;</div><div class="line">obj_1.foo.apply(obj_2);</div></pre></td></tr></table></figure></p>
+<p>结果输出2，证明显式绑定优先于隐式绑定；</p>
+<ul>
+<li>new绑定优先于隐式绑定：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo1</span>(<span class="params">a</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.a=a;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj1=&#123;</div><div class="line">	<span class="attr">a</span>:<span class="number">1</span>,</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> foo2=foo1.bind(obj1);</div><div class="line"><span class="keyword">var</span> obj2=<span class="keyword">new</span> foo2(<span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(obj2.a);</div></pre></td></tr></table></figure>
+<p> 输出结果为2，foo1.bind(obj1)的作用是将foo的this硬绑定给obj对象，并且将这个硬绑定后的foo函数当返回值赋值给foo2。<br> 当obj2=new foo1(2)的作用是将以下函数的this对象复制给obj2。（这里我本人理解为对象的复制，不知道是否正确，我还没好好研究对象拷贝）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.a=<span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>#如何判断this</p>
+<p>step1:  函数是否在new中调用，如果是，this绑定的是新创建的对象；var a=new foo();<br>step2:  函数是否通过call、apply或者硬绑定调用，如果是，this绑定的是call、apply、bind<br>    参数里面指定的对象；var a=call(obj)<br>step3:  函数是否在上下文调用中被绑定，如果是this绑定到上下文对象 var a=obj.foo();<br>step4:  以上都不是，则使用默认绑定，在严格模式下，绑定到undefined，否则绑定到全局对象。<br>      var bar=foo();</p>
+<p>#绑定例外：<br>这块儿自己还没弄明白，待更新；</p>
 
       
 
@@ -335,6 +351,20 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2017/03/25/创建对象的几种方式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          创建对象的几种方式总结
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 
 
