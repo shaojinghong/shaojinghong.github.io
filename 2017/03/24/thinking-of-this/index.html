@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="景洪的个人博客">
 <meta property="og:description" content="javascript中的“this”">
 <meta property="og:image" content="http://onbhjgmre.bkt.clouddn.com/%E6%9C%AA%E6%A0%87%E9%A2%98-1.jpg">
-<meta property="og:updated_time" content="2017-03-24T15:32:29.000Z">
+<meta property="og:updated_time" content="2017-03-25T08:00:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中“this”的详细总结">
 <meta name="twitter:description" content="javascript中的“this”">
@@ -227,9 +227,33 @@ var _hmt = _hmt || [];
 </ul>
 <p>结果输出1，this指向全局对象；参数传递是一种赋值行为，隐式赋值，所有传入的函数，也是foo函数本身；</p>
 <ul>
-<li>隐式丢失3:<br>和情形2一样，只不过是把函数传入内置函数；<br>function foo(){<br>  console.log(this.a);<br>}<br>var obj={<br>  a:2,<br>  foo:foo<br>}<br>var a=1;<br>setTimeout(obj.foo,1000);</li>
+<li>隐式丢失3:<br>和情形2一样，只不过是把函数传入内置函数；<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj=&#123;</div><div class="line">	<span class="attr">a</span>:<span class="number">2</span>,</div><div class="line">	<span class="attr">foo</span>:foo</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</div><div class="line">setTimeout(obj.foo,<span class="number">1000</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li>显式绑定：</li>
+</ol>
+<blockquote>
+<p>每个函数都包含两个非继承来的方法：apply()、call();这两个函数的用途都是在特定的作用域中调用函数，实际上等于设置函数体内this对象的值</p>
+</blockquote>
+<p>这两个方法可以接受两个参数，第一个是一个对象；通过foo.apply(obj)和foo.call(obj)方法将函数foo的this绑定到对象obj上。<br>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj=&#123;</div><div class="line">	<span class="attr">a</span>:<span class="number">2</span>,</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</div><div class="line">foo.apply(obj);</div></pre></td></tr></table></figure></p>
+<p>输出结果为2.</p>
+<blockquote>
+<p>bind()方法会创建一个新函数,称为绑定函数.当调用这个绑定函数时,绑定函数会以创建它时传入bind方法的第一个参数作为this,传入bind方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数.</p>
+</blockquote>
+<p>例如下面函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">something</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.a,something);</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.a+something;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj=&#123;</div><div class="line">	<span class="attr">a</span>:<span class="number">2</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> bar=foo.bind(obj);</div><div class="line"><span class="keyword">var</span> b=bar(<span class="number">3</span>);</div><div class="line"><span class="built_in">console</span>.log(b);</div></pre></td></tr></table></figure></p>
+<p>首先要清楚：bar是一个新函数，是foo.bindd(obj)运行时产生的；<br>然后思考函数的内容和参数分别是什么？<br>它的内容和参数仍然和foo一样，只是里面的this对象指向obj；所以运行bar(3)时，结果是this.a+3，即2+3=5；</p>
+<blockquote>
+<p>API调用的“上下文”也是一种显式绑定实现方式；<br>例如数组的迭代方法中的forEach()；这种方法没有返回值，它接受两个参数：要在每一项上运行的函数，该函数运行的作用域。<br>函数传入3个三个参数：数组的值item、数组位置index、数组对象本身。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> obj=&#123;</div><div class="line">	<span class="attr">id</span>:<span class="string">"owesome"</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">el</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.id,el);</div><div class="line">&#125;</div><div class="line">num.forEach(foo,obj);</div></pre></td></tr></table></figure>
+<p>输出结果：<br>owesome 1<br>owesome 3<br>owesome 4<br>owesome 6<br>owesome 2</p>
+<ul>
+<li>硬绑定：解决绑定丢失问题<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj=&#123;</div><div class="line">	<span class="attr">a</span>:<span class="number">2</span>,</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> b=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	foo.apply(obj);</div><div class="line">&#125;</div><div class="line">b();</div><div class="line">setTimeout(b,<span class="number">100</span>);</div><div class="line">bar.call(<span class="built_in">window</span>);</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <!--more-->
+<p>输出结果都是2；    </p>
 
       
 
@@ -474,7 +498,7 @@ var _hmt = _hmt || [];
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">Litten，&lt;br&gt;毕业于华科，就职于鹅厂&lt;br&gt;&lt;br&gt;热爱大海与冷笑话，&lt;br/&gt;目前是一枚前端&lt;br/&gt;&lt;br/&gt;胆小认生，不易相处，&lt;br&gt;年轻无为，卖马为生。</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">邵景洪，西安工业大学大三狗，在学计算机，主要方向前端开发。</div>
   	  	
     	</section>
     
