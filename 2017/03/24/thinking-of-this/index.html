@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="景洪的个人博客">
 <meta property="og:description" content="javascript中的“this”">
 <meta property="og:image" content="http://onbhjgmre.bkt.clouddn.com/%E6%9C%AA%E6%A0%87%E9%A2%98-1.jpg">
-<meta property="og:updated_time" content="2017-03-25T12:11:42.000Z">
+<meta property="og:updated_time" content="2017-03-25T12:12:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中“this”的详细总结">
 <meta name="twitter:description" content="javascript中的“this”">
@@ -269,7 +269,7 @@ var _hmt = _hmt || [];
 <p> 输出结果为2，foo1.bind(obj1)的作用是将foo的this硬绑定给obj对象，并且将这个硬绑定后的foo函数当返回值赋值给foo2。<br> 当obj2=new foo1(2)的作用是将以下函数的this对象复制给obj2。（这里我本人理解为对象的复制，不知道是否正确，我还没好好研究对象拷贝）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.a=<span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>#如何判断this</p>
 <p>step1:  函数是否在new中调用，如果是，this绑定的是新创建的对象；var a=new foo();<br>step2:  函数是否通过call、apply或者硬绑定调用，如果是，this绑定的是call、apply、bind<br>    参数里面指定的对象；var a=call(obj)<br>step3:  函数是否在上下文调用中被绑定，如果是this绑定到上下文对象 var a=obj.foo();<br>step4:  以上都不是，则使用默认绑定，在严格模式下，绑定到undefined，否则绑定到全局对象。<br>      var bar=foo();</p>
-<p>#绑定例外：<br>这块儿自己还没弄明白，待更新；</p>
+<h1 id="绑定例外："><a href="#绑定例外：" class="headerlink" title="绑定例外："></a>绑定例外：</h1><p>这块儿自己还没弄明白，待更新；</p>
 
       
 

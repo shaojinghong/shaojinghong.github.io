@@ -8,16 +8,42 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>创建对象的几种方式总结 | 景洪的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="那些没有踏出的脚步，不如从现在开始">
+  <meta name="description" content="大三上学期看了《javasript高级程序设计》，当时看了2个月才看完，看的时候代码也对着书敲了一遍，今年作项目的时候感激有些模糊了，于是拿起书在图书馆再看一遍，对照《你不知道的js》一起，看完关上书本写博客总结一下，我认为这是一个很好的学习思考的方式，到目前为止我知道如下几种构造方式：
+
+对象字面量
+工厂模式
+构造函数模式
+原型模式
+组合使用构造函数模式和原型模式
+动态原型模式
+寄生构造函数模">
 <meta property="og:type" content="article">
 <meta property="og:title" content="创建对象的几种方式总结">
 <meta property="og:url" content="http://yoursite.com/2017/03/25/创建对象的几种方式/index.html">
 <meta property="og:site_name" content="景洪的个人博客">
-<meta property="og:description" content="那些没有踏出的脚步，不如从现在开始">
-<meta property="og:updated_time" content="2017-03-25T09:20:11.000Z">
+<meta property="og:description" content="大三上学期看了《javasript高级程序设计》，当时看了2个月才看完，看的时候代码也对着书敲了一遍，今年作项目的时候感激有些模糊了，于是拿起书在图书馆再看一遍，对照《你不知道的js》一起，看完关上书本写博客总结一下，我认为这是一个很好的学习思考的方式，到目前为止我知道如下几种构造方式：
+
+对象字面量
+工厂模式
+构造函数模式
+原型模式
+组合使用构造函数模式和原型模式
+动态原型模式
+寄生构造函数模">
+<meta property="og:image" content="http://onbhjgmre.bkt.clouddn.com/creatPrpject.jpg">
+<meta property="og:updated_time" content="2017-04-08T03:01:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建对象的几种方式总结">
-<meta name="twitter:description" content="那些没有踏出的脚步，不如从现在开始">
+<meta name="twitter:description" content="大三上学期看了《javasript高级程序设计》，当时看了2个月才看完，看的时候代码也对着书敲了一遍，今年作项目的时候感激有些模糊了，于是拿起书在图书馆再看一遍，对照《你不知道的js》一起，看完关上书本写博客总结一下，我认为这是一个很好的学习思考的方式，到目前为止我知道如下几种构造方式：
+
+对象字面量
+工厂模式
+构造函数模式
+原型模式
+组合使用构造函数模式和原型模式
+动态原型模式
+寄生构造函数模">
+<meta name="twitter:image" content="http://onbhjgmre.bkt.clouddn.com/creatPrpject.jpg">
   
     <link rel="alternative" href="/atom.xml" title="景洪的个人博客" type="application/atom+xml">
   
@@ -191,7 +217,20 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><img src="http://onbhjgmre.bkt.clouddn.com/creatPrpject.jpg" alt=""></p>
+<p>大三上学期看了《javasript高级程序设计》，当时看了2个月才看完，看的时候代码也对着书敲了一遍，今年作项目的时候感激有些模糊了，于是拿起书在图书馆再看一遍，对照《你不知道的js》一起，看完关上书本写博客总结一下，我认为这是一个很好的学习思考的方式，到目前为止我知道如下几种构造方式：</p>
+<ul>
+<li>对象字面量</li>
+<li>工厂模式</li>
+<li>构造函数模式</li>
+<li>原型模式</li>
+<li>组合使用构造函数模式和原型模式</li>
+<li>动态原型模式</li>
+<li>寄生构造函数模式</li>
+<li>稳妥构造函数模式<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//工厂模式：</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name,age,job</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> obj=<span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    obj.name=name;</div><div class="line">    obj.age=age;</div><div class="line">    obj.job=job;</div><div class="line">    <span class="keyword">return</span> obj;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> person1=createPerson(<span class="string">"shaojinghong"</span>,<span class="number">21</span>,<span class="string">"software engineer"</span>);</div><div class="line">  <span class="built_in">console</span>.log(person1.constructor==createPerson);<span class="comment">//false</span></div><div class="line">  <span class="built_in">console</span>.log(person1 <span class="keyword">instanceof</span> createPerson);<span class="comment">//false</span></div><div class="line"></div><div class="line"><span class="comment">// 构造函数模式：</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=name;</div><div class="line">    <span class="keyword">this</span>.age=age;</div><div class="line">    <span class="keyword">this</span>.job=job;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person2=<span class="keyword">new</span> Person(<span class="string">"jinghong"</span>,<span class="number">21</span>,<span class="string">"software engineer"</span>);</div><div class="line"><span class="built_in">console</span>.log(person2.constructor==Person);<span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(person2 <span class="keyword">instanceof</span> Person);<span class="comment">//true</span></div><div class="line"></div><div class="line"><span class="comment">//原型模式：</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
 
       
@@ -288,7 +327,25 @@ var _hmt = _hmt || [];
 
 
   
-    <div class="duoshuo"></div>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="创建对象的几种方式" data-title="创建对象的几种方式总结" data-url="http://yoursite.com/2017/03/25/创建对象的几种方式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
 
