@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>给事件处理函数传参数 | 景洪的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天刷百度前端学院的任务，遇到了一个问题，需要给事件处理函数传参数；我把问题抽象成下面问题：123456789var lis = document.getElementsByTagName(&apos;li&apos;);for(var i=0; i&amp;lt;lis.length; i++)&amp;#123;  this.i=i;  btn.addEventListener(&apos;click&apos;,handler.bind(this">
+  <meta name="description" content="今天刷百度前端学院的任务，遇到了一个问题，需要给事件处理函数传参数；我把问题抽象成下面问题：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="给事件处理函数传参数">
 <meta property="og:url" content="http://yoursite.com/2017/04/09/给事件处理函数传参数/index.html">
 <meta property="og:site_name" content="景洪的个人博客">
-<meta property="og:description" content="今天刷百度前端学院的任务，遇到了一个问题，需要给事件处理函数传参数；我把问题抽象成下面问题：123456789var lis = document.getElementsByTagName(&apos;li&apos;);for(var i=0; i&amp;lt;lis.length; i++)&amp;#123;  this.i=i;  btn.addEventListener(&apos;click&apos;,handler.bind(this">
-<meta property="og:updated_time" content="2017-04-09T03:32:45.000Z">
+<meta property="og:description" content="今天刷百度前端学院的任务，遇到了一个问题，需要给事件处理函数传参数；我把问题抽象成下面问题：">
+<meta property="og:updated_time" content="2017-04-09T03:35:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给事件处理函数传参数">
-<meta name="twitter:description" content="今天刷百度前端学院的任务，遇到了一个问题，需要给事件处理函数传参数；我把问题抽象成下面问题：123456789var lis = document.getElementsByTagName(&apos;li&apos;);for(var i=0; i&amp;lt;lis.length; i++)&amp;#123;  this.i=i;  btn.addEventListener(&apos;click&apos;,handler.bind(this">
+<meta name="twitter:description" content="今天刷百度前端学院的任务，遇到了一个问题，需要给事件处理函数传参数；我把问题抽象成下面问题：">
   
     <link rel="alternative" href="/atom.xml" title="景洪的个人博客" type="application/atom+xml">
   
@@ -191,7 +191,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天刷百度前端学院的任务，遇到了一个问题，需要给事件处理函数传参数；我把问题抽象成下面问题：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lis = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;lis.length; i++)&#123;</div><div class="line">  <span class="keyword">this</span>.i=i;</div><div class="line">  btn.addEventListener(<span class="string">'click'</span>,handler.bind(<span class="keyword">this</span>));</div><div class="line">&#125;</div><div class="line"><span class="comment">//我想在事件处理函数里面获得i。</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.i;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <p>今天刷百度前端学院的任务，遇到了一个问题，需要给事件处理函数传参数；我把问题抽象成下面问题：<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lis = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;lis.length; i++)&#123;</div><div class="line">  <span class="keyword">this</span>.i=i;</div><div class="line">  btn.addEventListener(<span class="string">'click'</span>,handler.bind(<span class="keyword">this</span>));</div><div class="line">&#125;</div><div class="line"><span class="comment">//我想在事件处理函数里面获得i。</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.i;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>####ES5中bind()解决：<br>解决方法，将事件处理函数的上下文绑定到for循环里面的this；事件处理函数的上下文不在是btn对象；</p>
 <p>分析一下原理，首先详细研究一下bind函数；<br>bind函数用于将当前函数和指定对象绑定，返回一个新的函数，当新函数被调用时，代码会在指定对象的上下文中执行。<br>语法为：</p>
 <blockquote>
@@ -203,6 +203,71 @@ var _hmt = _hmt || [];
 <p>jQuery.proxy( context, name )<br>context函数的上下文语境会被设置成这个 object 对象<br>name将要改变上下文语境的函数名(这个函数必须是前一个参数 ‘context’ 对象的属性)</p>
 </blockquote>
 <p>这个方法通常在向一个元素上附加事件处理函数时，上下文语境实际是指向另一个对象的情况下使用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line"><span class="attr">name</span>: <span class="string">"John"</span>,</div><div class="line"><span class="attr">test</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">alert( <span class="keyword">this</span>.name );</div><div class="line">$(<span class="string">"#test"</span>).unbind(<span class="string">"click"</span>, obj.test);</div><div class="line">&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">$(<span class="string">"#test"</span>).click( jQuery.proxy( obj, <span class="string">"test"</span> ) );</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 以下代码跟上面那句是等价的:</span></div><div class="line"><span class="comment">// $("#test").click( jQuery.proxy( obj.test, obj ) );</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 可以与单独执行下面这句做个比较。</span></div><div class="line"><span class="comment">// $("#test").click( obj.test );</span></div></pre></td></tr></table></figure></p>
+<p>/<em> jQuery 源码之 proxy:<br> 使用 apply 形式, 执行回调函数.
+</em>/<br>jQuery.proxy = function( fn, proxy, thisObject ) {<br>    if ( arguments.length === 2 ) {<br>        // jQuery.proxy(context, name);<br>        if ( typeof proxy === “string” ) {<br>            thisObject = fn;<br>            fn = thisObject[ proxy ];<br>            proxy = undefined;</p>
+<pre><code>        /* 转化结果：
+            thisObject -&gt; context
+            fn -&gt; name
+            proxy -&gt; undefined
+         */
+    }
+    // jQuery.proxy(name, context);
+    else if ( proxy &amp;&amp; !jQuery.isFunction( proxy ) ) {
+        thisObject = proxy;
+        proxy = undefined;
+    }
+}
+if ( !proxy &amp;&amp; fn ) {
+    /* 使用 proxy 保证 函数执行时, context 为指定值 */
+    proxy = function() {
+        return fn.apply( thisObject || this, arguments );
+    };
+}
+// Set the guid of unique handler to the same of original handler, so it can be removed
+if ( fn ) {
+    proxy.guid = fn.guid = fn.guid || proxy.guid || jQuery.guid++;
+}
+// So proxy can be declared as an argument
+return proxy;
+</code></pre><p>}<br>其实就是平常使用的的call和apply，大部分的时候作为回调使用。</p>
+<p>在stackoverflow上有个问题，其中的例子比较典型，供参考：<br>比如有如下代码：<br>$(‘#myElement’).click(function() {</p>
+<pre><code>    // In this function, &quot;this&quot; is our DOM element.
+
+
+$(this).addClass(&apos;aNewClass&apos;);
+</code></pre><p>});<br>这里的this就是我们的DOM元素。如果我们要在增加class样式之前需要等待一段时间，可能会将代码写成下面这样（注意：有问题的代码）<br>$(‘#myElement’).click(function() {</p>
+<pre><code>setTimeout(function() {
+
+
+      // Problem! In this function &quot;this&quot; is not our element!
+
+
+    $(this).addClass(&apos;aNewClass&apos;);
+
+
+}, 1000);
+</code></pre><p>});<br>这里的this就不是我们期望的那个DOM元素了。解决方法就是使用jQuery的$.proxy()了，代码如下：<br>$(‘#myElement’).click(function() {</p>
+<p>   // ——————v——–give $.proxy our function,</p>
+<pre><code>setTimeout($.proxy(function() {
+
+
+    $(this).addClass(&apos;aNewClass&apos;);  // Now &quot;this&quot; is again our element
+
+
+}, this), 1000);
+</code></pre><p>   // —^————–and tell it that we want our DOM element to be the</p>
+<p>   //                      value of “this” in the function</p>
+<p>});<br>我们可以这样来理解上面的代码：<br>function() {</p>
+<pre><code>// v--------func is the function we gave to $.proxy
+
+
+func.apply( ctx );
+
+
+// ----------^------ ctx is the value we wanted for &quot;this&quot; (our DOM element)
+</code></pre><p>}<br>这就体现出来jQuery中$.proxy()的强大功效了。</p>
+<p>注意：在jQuery 1.6及之后的版本中，除了上面提到的两种用法之外，proxy还增加了其他两种用法：</p>
+<p>jQuery.proxy( function, context [, additionalArguments ] )<br>jQuery.proxy( context, name [, additionalArguments ] )<br><!--more--></p>
 
       
 
