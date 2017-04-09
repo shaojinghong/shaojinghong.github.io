@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/09/给事件处理函数传参数/index.html">
 <meta property="og:site_name" content="景洪的个人博客">
 <meta property="og:description" content="今天刷百度前端学院的任务，遇到了一个问题，需要给事件处理函数传参数；我把问题抽象成下面问题：">
-<meta property="og:updated_time" content="2017-04-09T03:35:41.000Z">
+<meta property="og:updated_time" content="2017-04-09T08:04:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给事件处理函数传参数">
 <meta name="twitter:description" content="今天刷百度前端学院的任务，遇到了一个问题，需要给事件处理函数传参数；我把问题抽象成下面问题：">
@@ -197,7 +197,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>bar.bind(上下文参数, 普通参数1, 普通参数2, …);普通参数将传入bar函数。</p>
 </blockquote>
-<p>####用jQuery中$.proxy()方法解决；<br>jQuery.proxy(),接受一个函数，然后返回一个新函数，并且这个新函数始终保持了特定的上下文(context )语境。</p>
+<h4 id="用jQuery中-proxy-方法解决；"><a href="#用jQuery中-proxy-方法解决；" class="headerlink" title="用jQuery中$.proxy()方法解决；"></a>用jQuery中$.proxy()方法解决；</h4><p>jQuery.proxy(),接受一个函数，然后返回一个新函数，并且这个新函数始终保持了特定的上下文(context )语境。</p>
 <blockquote>
 <p>jQuery.proxy( function, context )<br>function将要改变上下文语境的函数。<br>context函数的上下文语境(<code>this</code>)会被设置成这个 object 对象。</p>
 <p>jQuery.proxy( context, name )<br>context函数的上下文语境会被设置成这个 object 对象<br>name将要改变上下文语境的函数名(这个函数必须是前一个参数 ‘context’ 对象的属性)</p>
@@ -350,6 +350,15 @@ func.apply( ctx );
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/04/09/总结js数据类型中的Number/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          总结js数据类型中的Number
+        
+      </div>
+    </a>
   
   
     <a href="/2017/04/09/详细总结js中数组/" id="article-nav-older" class="article-nav-link-wrap">
