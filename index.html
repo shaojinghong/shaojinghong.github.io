@@ -172,6 +172,129 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-给事件处理函数传参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/09/给事件处理函数传参数/">给事件处理函数传参数</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/09/给事件处理函数传参数/" class="archive-article-date">
+  	<time datetime="2017-04-09T03:05:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天刷百度前端学院的任务，遇到了一个问题，需要给事件处理函数传参数；我把问题抽象成下面问题：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lis = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;lis.length; i++)&#123;</div><div class="line">  <span class="keyword">this</span>.i=i;</div><div class="line">  btn.addEventListener(<span class="string">'click'</span>,handler.bind(<span class="keyword">this</span>));</div><div class="line">&#125;</div><div class="line"><span class="comment">//我想在事件处理函数里面获得i。</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.i;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>####ES5中bind()解决：<br>解决方法，将事件处理函数的上下文绑定到for循环里面的this；事件处理函数的上下文不在是btn对象；</p>
+<p>分析一下原理，首先详细研究一下bind函数；<br>bind函数用于将当前函数和指定对象绑定，返回一个新的函数，当新函数被调用时，代码会在指定对象的上下文中执行。<br>语法为：</p>
+<blockquote>
+<p>bar.bind(上下文参数, 普通参数1, 普通参数2, …);普通参数将传入bar函数。</p>
+</blockquote>
+<p>####用jQuery中$.proxy()方法解决；<br>jQuery.proxy(),接受一个函数，然后返回一个新函数，并且这个新函数始终保持了特定的上下文(context )语境。</p>
+<blockquote>
+<p>jQuery.proxy( function, context )<br>function将要改变上下文语境的函数。<br>context函数的上下文语境(<code>this</code>)会被设置成这个 object 对象。</p>
+<p>jQuery.proxy( context, name )<br>context函数的上下文语境会被设置成这个 object 对象<br>name将要改变上下文语境的函数名(这个函数必须是前一个参数 ‘context’ 对象的属性)</p>
+</blockquote>
+<p>这个方法通常在向一个元素上附加事件处理函数时，上下文语境实际是指向另一个对象的情况下使用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line"><span class="attr">name</span>: <span class="string">"John"</span>,</div><div class="line"><span class="attr">test</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">alert( <span class="keyword">this</span>.name );</div><div class="line">$(<span class="string">"#test"</span>).unbind(<span class="string">"click"</span>, obj.test);</div><div class="line">&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">$(<span class="string">"#test"</span>).click( jQuery.proxy( obj, <span class="string">"test"</span> ) );</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 以下代码跟上面那句是等价的:</span></div><div class="line"><span class="comment">// $("#test").click( jQuery.proxy( obj.test, obj ) );</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 可以与单独执行下面这句做个比较。</span></div><div class="line"><span class="comment">// $("#test").click( obj.test );</span></div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/09/给事件处理函数传参数/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-详细总结js中数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/09/详细总结js中数组/">详细总结js中数组</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/09/详细总结js中数组/" class="archive-article-date">
+  	<time datetime="2017-04-09T02:07:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/09/详细总结js中数组/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="page-创建对象的几种方式" class="article article-type-page  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
