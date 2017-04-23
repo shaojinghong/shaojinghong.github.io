@@ -29,7 +29,9 @@ relative相对定位
 
 position这个属性定义建立元素布局所用的定位机制。任何元素都可以定位，不过绝对或固定元素会">
 <meta property="og:image" content="http://onbhjgmre.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-19%20%E4%B8%8B%E5%8D%889.46.07.png">
-<meta property="og:updated_time" content="2017-04-19T13:57:02.000Z">
+<meta property="og:image" content="http://onbhjgmre.bkt.clouddn.com/absolute%E5%B1%85%E4%B8%AD.png">
+<meta property="og:image" content="http://onbhjgmre.bkt.clouddn.com/%E4%BE%A7%E6%A0%8F%E5%AE%9A%E4%BD%8D.png">
+<meta property="og:updated_time" content="2017-04-19T14:44:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解css之 —— absolute定位">
 <meta name="twitter:description" content="工欲善其事，必先利其器。前端开发css是一门利器，以前写了很多css样式和布局，用到了很多css技巧，但是很多时候不能熟练并且准确无误运用到业务中，所以我会在后面“深入理解css”系列中做详细系统总结；
@@ -229,8 +231,13 @@ var _hmt = _hmt || [];
 <p>inherit    规定应该从父元素继承 position 属性的值。</p>
 </blockquote>
 <h2 id="absolute绝对定位；"><a href="#absolute绝对定位；" class="headerlink" title="absolute绝对定位；"></a>absolute绝对定位；</h2><p>absolute具有两种特性：破坏性，包裹性</p>
-<h1 id="破坏性"><a href="#破坏性" class="headerlink" title="破坏性"></a>破坏性</h1><h1 id="包裹性"><a href="#包裹性" class="headerlink" title="包裹性"></a>包裹性</h1><h1 id="absolute的应用：-icon绝对定位"><a href="#absolute的应用：-icon绝对定位" class="headerlink" title="absolute的应用： icon绝对定位"></a>absolute的应用： icon绝对定位</h1><figure class="highlight plain"><figcaption><span>type="text/css"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">       .icon&#123;</div><div class="line">       	background: yellow;</div><div class="line">        position: absolute;</div><div class="line">        margin: -16px 0 0 2px;</div><div class="line">       &#125;</div><div class="line">	&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">     &lt;span&gt;我是icon的邻元素&lt;/span&gt;</div><div class="line">     &lt;span class=&quot;icon&quot;&gt;icon&lt;/span&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<h1 id="破坏性"><a href="#破坏性" class="headerlink" title="破坏性"></a>破坏性</h1><h1 id="包裹性"><a href="#包裹性" class="headerlink" title="包裹性"></a>包裹性</h1><h1 id="absolute的应用："><a href="#absolute的应用：" class="headerlink" title="absolute的应用："></a>absolute的应用：</h1><p> 1 、icon绝对定位</p>
+<figure class="highlight plain"><figcaption><span>type="text/css"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">       .icon&#123;</div><div class="line">       	background: yellow;</div><div class="line">        position: absolute;</div><div class="line">        margin: -16px 0 0 2px;</div><div class="line">       &#125;</div><div class="line">	&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">     &lt;span&gt;我是icon的邻元素&lt;/span&gt;</div><div class="line">     &lt;span class=&quot;icon&quot;&gt;icon&lt;/span&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
 <p><img src="http://onbhjgmre.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-19%20%E4%B8%8B%E5%8D%889.46.07.png" alt=""></p>
+<p>2、居中显示<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"height: 200px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></div><div class="line">      &amp;nbsp</div><div class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon"</span>&gt;</span>icon<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">       <span class="selector-class">.icon</span>&#123;</div><div class="line">       	<span class="attribute">background</span>: yellow;</div><div class="line">        <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">        <span class="attribute">position</span>: absolute;</div><div class="line">        <span class="attribute">margin-left</span>: -<span class="number">50px</span>;</div><div class="line">       &#125;</div><div class="line">       <span class="selector-class">.parent</span>&#123;</div><div class="line">        <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">        <span class="attribute">margin</span>: <span class="number">0</span> auto;</div><div class="line">        <span class="attribute">background</span>: <span class="number">#ccc</span>;</div><div class="line">        <span class="attribute">text-align</span>: center;</div><div class="line">       &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><img src="http://onbhjgmre.bkt.clouddn.com/absolute%E5%B1%85%E4%B8%AD.png" alt=""></p>
+<p>实现原理：<br>parent容器设置text－align：center后，&amp;nbsp 居中显示，span标签为绝对定位，它脱离文档流，并且具有跟随性，所以它会跟随在在&amp;nbsp的后面。<br>同样的道理也可以设置为text－align这，这样就出现了侧栏定位的效果。</p>
+<p><img src="http://onbhjgmre.bkt.clouddn.com/%E4%BE%A7%E6%A0%8F%E5%AE%9A%E4%BD%8D.png" alt=""></p>
 
       
 
@@ -313,6 +320,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/04/23/shaojinghong/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          shaojinghong
+        
+      </div>
+    </a>
   
   
     <a href="/2017/04/09/总结js数据类型中的Number/" id="article-nav-older" class="article-nav-link-wrap">
@@ -432,6 +448,10 @@ var _hmt = _hmt || [];
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
