@@ -172,6 +172,147 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-跨域请求" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/22/跨域请求/">跨域请求</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/22/跨域请求/" class="archive-article-date">
+  	<time datetime="2017-05-22T04:49:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#跨域请求</p>
+<p>我在前端开发过程中，在请求服务器端后台资源的时候，由于前端资源的域名和服务器端域名不同，导致无法获取资源。</p>
+<p>比如，我在本地发起了一个http的ajax请求，请求地址为<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>  ，浏览器显示结果如下：</p>
+<p><img src="http://img.blog.csdn.net/20170522093928434?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2l0aHViXzM4ODYxNjc0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20170522093955122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2l0aHViXzM4ODYxNjc0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h3 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h3><p>出现错误表示，不能跨域请求资源；那什么是跨域呢？<br>首先回顾一下域名的组成：<br><a href="http://www.abc.com:8080/server/jquery.js" target="_blank" rel="external">http://www.abc.com:8080/server/jquery.js</a><br>-<strong>协议</strong>: http<br>-<strong>子域名</strong>: www<br>-<strong>主域名</strong>:  abc.com<br>-<strong>端口号</strong>:  8080<br>-<strong>请求资源</strong>: script/jQuery.js<br>跨域：当协议、子域名、主域名、端口号、请求资源都不同时，这样去请求资源都叫做跨域。</p>
+<h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><blockquote>
+<p>同源策略，它是由Netscape提出的一个著名的安全策略。<br>现在所有支持JavaScript 的浏览器都会使用这个策略。<br>所谓同源是指，域名，协议，端口相同。<br>当一个浏览器的两个tab页中分别打开来 百度和谷歌的页面<br>当浏览器的百度tab页执行一个脚本的时候会检查这个脚本是属于哪个页面的，即检查是否同源，只有和百度同源的脚本才会被执行。<br>如果非同源，那么在请求数据时，浏览器会在控制台中报一个异常，提示拒绝访问。</p>
+</blockquote>
+<h3 id="跨域请求方案一：-代理（属于后台技术）"><a href="#跨域请求方案一：-代理（属于后台技术）" class="headerlink" title="跨域请求方案一： 代理（属于后台技术）"></a>跨域请求方案一： 代理（属于后台技术）</h3><p>通过在同域名web服务器端创建一个代理，   比如：<br>      在北京的服务器（域名：<a href="http://www.beijing.com" target="_blank" rel="external">http://www.beijing.com</a>)<br>     上海的服务器（域名：<a href="http://www.shanghai.com" target="_blank" rel="external">http://www.shanghai.com</a>)<br>然后在北京的服务器后台，通过<a href="http://www.beijing.com/proxy.shanghai.com/server.php来调用上海的服务器端资源。然后再把相应结果返回給前端。" target="_blank" rel="external">http://www.beijing.com/proxy.shanghai.com/server.php来调用上海的服务器端资源。然后再把相应结果返回給前端。</a></p>
+<h3 id="跨域请求方案二：-jsonp（用于解决主流浏览器get请求，跨域问题"><a href="#跨域请求方案二：-jsonp（用于解决主流浏览器get请求，跨域问题" class="headerlink" title="跨域请求方案二： jsonp（用于解决主流浏览器get请求，跨域问题)"></a>跨域请求方案二： jsonp（用于解决主流浏览器get请求，跨域问题)</h3><p>####原理：<br>利用了在html文档中，&lt; script scr＝’’<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘’ &gt;标签可以通过src属性跨域请求资源。<br>比如在<a href="http://www.a.com" target="_blank" rel="external">http://www.a.com</a> 文档中有jsonp.js文件：声明jsonp函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  alert(json[<span class="string">'name'</span>])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a href="http://www.b.com" target="_blank" rel="external">http://www.b.com</a> html 文档中有代码段： 调用www.a.com中的js文件<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;sript src=<span class="symbol">'http</span>:<span class="comment">//www.a.com/jsonp.js'&gt;</span></div><div class="line">  jsonp(&#123;<span class="symbol">'nam</span>e':<span class="symbol">'jinghon</span>g',<span class="symbol">'ag</span>e': <span class="number">21</span>&#125;)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="jQuery的ajax方法本身就支持jsonp的特性；"><a href="#jQuery的ajax方法本身就支持jsonp的特性；" class="headerlink" title="jQuery的ajax方法本身就支持jsonp的特性；"></a>jQuery的ajax方法本身就支持jsonp的特性；</h4><blockquote>
+<p>如果获取的数据文件存放在远程服务器上（域名不同，也就是跨域获取数据），则需要使用jsonp类型。使用这种类型的话，会创建一个查询字符串参数 callback=? ，这个参数会加在请求的URL后面。服务器端应当在JSON数据前加上回调函数名，以便完成一个有效的JSONP请求。如果要指定回调函数的参数名来取代默认的callback，可以通过设置$.ajax()的jsonp参数。</p>
+<p>注意，JSONP是JSON格式的扩展。他要求一些服务器端的代码来检测并处理查询字符串参数。更多信息可以参阅 最初的文章。<br>如果指定了script或者jsonp类型，那么当从服务器接收到数据时，实际上是用了&lt;script&gt;标签而不是XMLHttpRequest对象。这种情况下，$.ajax()不再返回一个XMLHttpRequest对象，并且也不会传递事件处理函数，比如beforeSend。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//前端jQuery代码：</span></div><div class="line">$.ajax(&#123;type:<span class="string">'get'</span>,</div><div class="line">url:<span class="string">'http://www.baidu.com/server.php'</span>,</div><div class="line">jsonp: <span class="string">'callback'</span>,</div><div class="line">success: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">	  <span class="keyword">if</span> (data.success)&#123;</div><div class="line">	       ...todo...</div><div class="line">	   &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="comment">//后端php代码：</span></div><div class="line"> $jsonp = $_GET[<span class="string">'callback'</span>];</div><div class="line"> $result = $jsonp.(&#123;<span class="string">'success'</span>:<span class="keyword">false</span>,</div><div class="line">          <span class="string">'msg'</span>: <span class="string">'没有找到数据'</span>&#125;)</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="跨域请求方案三：XMLHttpRequest-Level-2"><a href="#跨域请求方案三：XMLHttpRequest-Level-2" class="headerlink" title="跨域请求方案三：XMLHttpRequest Level 2"></a>跨域请求方案三：XMLHttpRequest Level 2</h3><p>HTML5提供的XMLHttpRequest Level 2已经实现了跨域访问以及其他的一些新功能 ，这需要在远程服务器端添加如下代码，IE10以下版本不兼容。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">header</span><span class="params">(<span class="string">'Access-control-Allow-Origin: *'</span>)</span></span></div><div class="line"><span class="function"><span class="title">header</span><span class="params">(<span class="string">'Access-control-Allow-Methods:POST,GET'</span>)</span></span></div></pre></td></tr></table></figure></p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>代理最麻烦，需要后端修改，但是运用广泛，只要支持Ajax就行；<br>jsonp简单，但是只支持get请求，不支持post请求；XMLHttpReauestLevel2也挺简单，但是不支持IE10以下版本；</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/22/跨域请求/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-深入理解js闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/25/深入理解js闭包/">深入理解js闭包</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/25/深入理解js闭包/" class="archive-article-date">
+  	<time datetime="2017-04-25T13:57:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="闭包的直接传递"><a href="#闭包的直接传递" class="headerlink" title="闭包的直接传递"></a>闭包的直接传递</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a);</div><div class="line">  &#125;</div><div class="line">  out(b);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">  fn();   <span class="comment">//函数b其实是在这里被调用的，但是仍然能访问到函数foo内部的作用域</span></div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure>
+<h3 id="闭包的直接传递-1"><a href="#闭包的直接传递-1" class="headerlink" title="闭包的直接传递"></a>闭包的直接传递</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> c;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> a = <span class="number">3</span>;</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a);</div><div class="line"> &#125;</div><div class="line"> c = b;<span class="comment">//将函数b赋值给全局变量；</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">runingOut</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">    fn();</div><div class="line">&#125;</div><div class="line">foo();</div><div class="line">runingOut(c);</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/25/深入理解js闭包/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-shaojinghong" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
