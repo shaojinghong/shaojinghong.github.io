@@ -6,17 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: javascript | 景洪的个人博客</title>
+  <title>初识模块化AMD和Require.js | 景洪的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="那些没有踏出的脚步，不如从现在开始">
-<meta property="og:type" content="website">
-<meta property="og:title" content="景洪的个人博客">
-<meta property="og:url" content="http://yoursite.com/tags/javascript/index.html">
+  <meta name="description" content="##什么是模块化
+
+模块化是软件系统的属性，这个系统被分解为一组高内聚，低耦合的模块。那么在理想状态下我们只需要完成自己部分的核心业务逻辑代码，其他方面的依赖可以通过直接加载被人已经写好模块进行使用即可。作为一个模块化系统所必须的能力：
+1. 定义封装的模块。
+2. 定义新模块对其他模块的依赖。
+3. 可对其他模块的引入支持。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识模块化AMD和Require.js">
+<meta property="og:url" content="http://yoursite.com/2017/06/20/初识模块化AMD和Require-js/index.html">
 <meta property="og:site_name" content="景洪的个人博客">
-<meta property="og:description" content="那些没有踏出的脚步，不如从现在开始">
+<meta property="og:description" content="##什么是模块化
+
+模块化是软件系统的属性，这个系统被分解为一组高内聚，低耦合的模块。那么在理想状态下我们只需要完成自己部分的核心业务逻辑代码，其他方面的依赖可以通过直接加载被人已经写好模块进行使用即可。作为一个模块化系统所必须的能力：
+1. 定义封装的模块。
+2. 定义新模块对其他模块的依赖。
+3. 可对其他模块的引入支持。">
+<meta property="og:updated_time" content="2017-06-20T02:55:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="景洪的个人博客">
-<meta name="twitter:description" content="那些没有踏出的脚步，不如从现在开始">
+<meta name="twitter:title" content="初识模块化AMD和Require.js">
+<meta name="twitter:description" content="##什么是模块化
+
+模块化是软件系统的属性，这个系统被分解为一组高内聚，低耦合的模块。那么在理想状态下我们只需要完成自己部分的核心业务逻辑代码，其他方面的依赖可以通过直接加载被人已经写好模块进行使用即可。作为一个模块化系统所必须的能力：
+1. 定义封装的模块。
+2. 定义新模块对其他模块的依赖。
+3. 可对其他模块的引入支持。">
   
     <link rel="alternative" href="/atom.xml" title="景洪的个人博客" type="application/atom+xml">
   
@@ -170,36 +186,77 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-初识模块化AMD和Require-js" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      初识模块化AMD和Require.js
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/20/初识模块化AMD和Require-js/" class="archive-article-date">
+
+        
+        <a href="/2017/06/20/初识模块化AMD和Require-js/" class="archive-article-date">
   	<time datetime="2017-06-20T02:52:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/20/初识模块化AMD和Require-js/">初识模块化AMD和Require.js</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##什么是模块化</p>
+<blockquote>
+<p><strong>模块化</strong>是软件系统的属性，这个系统被分解为一组高内聚，低耦合的模块。那么在理想状态下我们只需要完成自己部分的核心业务逻辑代码，其他方面的依赖可以通过直接加载被人已经写好模块进行使用即可。<br>作为一个模块化系统所必须的能力：</p>
+<pre><code>1. 定义封装的模块。
+2. 定义新模块对其他模块的依赖。
+3. 可对其他模块的引入支持。
+</code></pre></blockquote>
+<a id="more"></a>
+<h2 id="如何书写模块"><a href="#如何书写模块" class="headerlink" title="如何书写模块"></a>如何书写模块</h2><p>####一、函数写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="comment">//...</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数m1和m2就是两个最原始的模块；但是它的缺点是，函数名高度暴露，污染了全局变量。</p>
+<h4 id="二、对象写法"><a href="#二、对象写法" class="headerlink" title="二、对象写法"></a>二、对象写法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">module</span> = <span class="keyword">new</span> <span class="built_in">Object</span>(&#123;</div><div class="line">     <span class="attr">m1</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">     &#125;,</div><div class="line">     <span class="attr">m2</span>: funciton()&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">     &#125;</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<p>以上代码完成了模块的书写，调用它们只需要module.m1, module.m2即可。但是，缺点是，对象里面的成员暴露出来了，在对象外部可以任意修改成员的值，例如：<br><figure class="highlight openscad"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">module</span>.<span class="title">m1</span>=</span><span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></div><div class="line"> <span class="comment">//...修改原来的方法</span></div></pre></td></tr></table></figure></p>
+<h4 id="三、立即执行函数的写法"><a href="#三、立即执行函数的写法" class="headerlink" title="三、立即执行函数的写法"></a>三、立即执行函数的写法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">module</span> = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="keyword">var</span> m1 = funtion()&#123;</div><div class="line">      <span class="comment">//...</span></div><div class="line">    &#125;;</div><div class="line">  <span class="keyword">var</span> m2 = funtion()&#123;</div><div class="line">     <span class="comment">//...</span></div><div class="line">    &#125;;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">     <span class="attr">m1</span>: m1,</div><div class="line">     <span class="attr">m2</span>: m2</div><div class="line">  &#125;</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
+<p>使用模块 <code>new module.m1();</code> <code>new module.m2();</code></p>
+<h2 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h2><p><strong>AMD</strong>：Asynchronous Module Definition 异步模块定义；<br>    官方文档  <a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank" rel="external">https://github.com/amdjs/amdjs-api/wiki/AMD</a><br>语法规范：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">require</span>([<span class="class"><span class="keyword">module</span>],<span class="title">callback</span>)</span></div></pre></td></tr></table></figure></p>
+<p>第一个参数［module］，是一个数组，里面的成员就是需要加载的模块。第二个参数callback，则是加载成功之后的回调函数；因为是异步加载，只有当依赖的模块加载完成后，才能运行后面的回调函数，所以适合浏览器环境，浏览器加载模块的速度往往取决于网速，所以比较慢，需要异步加载才行。</p>
+<p>##require.js</p>
+<blockquote>
+<p>RequireJS 是一个JavaScript模块加载器。它非常适合在浏览器中使用，但它也可以用在其他脚本环境，就像 Rhino and Node。使用RequireJS加载模块化脚本将提高代码的加载速度和质量。</p>
+</blockquote>
+<p>在没有出现require.js之前，在html中引入js需要很多script标签，就像下面，不仅不便于书写起来繁杂，并且为了保证模块加载的顺序正确，必须保证依赖越多的js文件放在后面。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">　　<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">　　<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">　　<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">　　<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">　　<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"5.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">　　<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"6.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>然而，require.js的出现解决以上问题，它具有以下两个优点：</p>
+<blockquote>
+<p>实现js的异步加载，避免网页失去响应。<br>管理模块之间的依赖性，便于代码的编写和维护。</p>
+</blockquote>
+<h2 id="require-js的使用"><a href="#require-js的使用" class="headerlink" title="require.js的使用"></a>require.js的使用</h2><h3 id="step1、引入require-js文件"><a href="#step1、引入require-js文件" class="headerlink" title="step1、引入require.js文件"></a>step1、引入require.js文件</h3><p>从官网下载require.js文件 <a href="http://requirejs.org/，然后再html中引入，注意要在body最底部引入，或者在script标签中加入defer" target="_blank" rel="external">http://requirejs.org/，然后再html中引入，注意要在body最底部引入，或者在script标签中加入defer</a> async=”true”<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">data-main</span>=<span class="string">"script/main.js"</span> <span class="attr">src</span>=<span class="string">"script/require.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="step2、模块的定义"><a href="#step2、模块的定义" class="headerlink" title="step2、模块的定义"></a>step2、模块的定义</h3><p>require.js模块定义的规则符合AMD规范；<br>define（）的第一个参数是一个数组，是依赖模块；第二参数是回调函数，当依赖加载完成后才能运行；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">define([<span class="string">'module1'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">m1</span>)</span>&#123;</div><div class="line">    m1.doSomeThing();<span class="comment">//...参数m1为加载的依赖模块'module';</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="step3、主模块的书写"><a href="#step3、主模块的书写" class="headerlink" title="step3、主模块的书写"></a>step3、主模块的书写</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">data-main</span>=<span class="string">"script/main.js"</span> <span class="attr">src</span>=<span class="string">"script/require.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这里面的main.js文件，我把它称为”主模块”，意思是整个网页的入口代码；书写规则如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//main.js</span></div><div class="line"><span class="built_in">require</span>.config(</div><div class="line">	paths:&#123;<span class="attr">jquery</span>:<span class="string">'jquery-1.8.3.min'</span>&#125;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">require</span>([<span class="string">'jquery'</span>,<span class="string">'window'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$,w</span>)</span>&#123;</div><div class="line">	$(<span class="string">"#a"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">       <span class="keyword">new</span> w.Window().alert(<span class="string">'shaojinghong'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">       	alert(<span class="string">'button is clicked'</span>);</div><div class="line">       &#125;);</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>require.config(<br>  paths:{jquery:’jquery-1.8.3.min’}<br>});将模块名和文件名关联起来，前提是main.js和jquery-1.8.3.min.js 在一个文件夹下；</p>
+</li>
+<li><p>如果模块和main.js不在同一个文件下，可以使用</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">　　<span class="selector-tag">require</span><span class="selector-class">.config</span>(&#123;</div><div class="line">　　　　<span class="attribute">paths</span>: &#123;</div><div class="line">　　　　　　<span class="string">"jquery"</span>: <span class="string">"lib/jquery.min"</span></div><div class="line">　　　　　　｝</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果模块在cdn中，可以使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">　　<span class="built_in">require</span>.config(&#123;</div><div class="line">　　　　<span class="attr">paths</span>: &#123;</div><div class="line">　　　　　　<span class="string">"jquery"</span>: <span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min"</span></div><div class="line">　　　　&#125;</div><div class="line">　　&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<!--more-->
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -211,209 +268,106 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/20/初识模块化AMD和Require-js/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/22/跨域请求/" class="archive-article-date">
-  	<time datetime="2017-05-22T04:49:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/22/跨域请求/">跨域请求</a>
-    </h1>
+  
+    <a href="/2017/06/06/ES6项目构建和gulp-的使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ES6项目构建和gulp 的使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="初识模块化AMD和Require-js" data-title="初识模块化AMD和Require.js" data-url="http://yoursite.com/2017/06/20/初识模块化AMD和Require-js/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/25/深入理解js闭包/" class="archive-article-date">
-  	<time datetime="2017-04-25T13:57:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/25/深入理解js闭包/">深入理解js闭包</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-page">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/09/给事件处理函数传参数/" class="archive-article-date">
-  	<time datetime="2017-04-09T03:05:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/09/给事件处理函数传参数/">给事件处理函数传参数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-page">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/25/创建对象的几种方式/" class="archive-article-date">
-  	<time datetime="2017-03-25T09:18:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/25/创建对象的几种方式/">创建对象的几种方式总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-page">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/24/thinking-of-this/" class="archive-article-date">
-  	<time datetime="2017-03-24T11:15:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/24/thinking-of-this/">javascript中“this”的详细总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -436,9 +390,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",
