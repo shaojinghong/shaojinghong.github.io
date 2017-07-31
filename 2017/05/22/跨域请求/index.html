@@ -210,7 +210,7 @@ var _hmt = _hmt || [];
 <p>同源策略，它是由Netscape提出的一个著名的安全策略。<br>现在所有支持JavaScript 的浏览器都会使用这个策略。<br>所谓同源是指，域名，协议，端口相同。<br>当一个浏览器的两个tab页中分别打开来 百度和谷歌的页面<br>当浏览器的百度tab页执行一个脚本的时候会检查这个脚本是属于哪个页面的，即检查是否同源，只有和百度同源的脚本才会被执行。<br>如果非同源，那么在请求数据时，浏览器会在控制台中报一个异常，提示拒绝访问。</p>
 </blockquote>
 <h3 id="跨域请求方案一：-代理（属于后台技术）"><a href="#跨域请求方案一：-代理（属于后台技术）" class="headerlink" title="跨域请求方案一： 代理（属于后台技术）"></a>跨域请求方案一： 代理（属于后台技术）</h3><p>通过在同域名web服务器端创建一个代理，   比如：<br>      在北京的服务器（域名：<a href="http://www.beijing.com" target="_blank" rel="external">http://www.beijing.com</a>)<br>     上海的服务器（域名：<a href="http://www.shanghai.com" target="_blank" rel="external">http://www.shanghai.com</a>)<br>然后在北京的服务器后台，通过<a href="http://www.beijing.com/proxy.shanghai.com/server.php来调用上海的服务器端资源。然后再把相应结果返回給前端。" target="_blank" rel="external">http://www.beijing.com/proxy.shanghai.com/server.php来调用上海的服务器端资源。然后再把相应结果返回給前端。</a></p>
-<h3 id="跨域请求方案二：-jsonp（用于解决主流浏览器get请求，跨域问题"><a href="#跨域请求方案二：-jsonp（用于解决主流浏览器get请求，跨域问题" class="headerlink" title="跨域请求方案二： jsonp（用于解决主流浏览器get请求，跨域问题)"></a>跨域请求方案二： jsonp（用于解决主流浏览器get请求，跨域问题)</h3><p>####原理：<br>利用了在html文档中，&lt; script scr＝’’<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘’ &gt;标签可以通过src属性跨域请求资源。<br>比如在<a href="http://www.a.com" target="_blank" rel="external">http://www.a.com</a> 文档中有jsonp.js文件：声明jsonp函数<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">  alert(json[<span class="string">'name'</span>])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="跨域请求方案二：-jsonp（用于解决主流浏览器get请求，跨域问题"><a href="#跨域请求方案二：-jsonp（用于解决主流浏览器get请求，跨域问题" class="headerlink" title="跨域请求方案二： jsonp（用于解决主流浏览器get请求，跨域问题)"></a>跨域请求方案二： jsonp（用于解决主流浏览器get请求，跨域问题)</h3><p>####原理：<br>利用了在html文档中，&lt; script scr＝’’<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘’ &gt;标签可以通过src属性跨域请求资源。<br>比如在<a href="http://www.a.com" target="_blank" rel="external">http://www.a.com</a> 文档中有jsonp.js文件：声明jsonp函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  alert(json[<span class="string">'name'</span>])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><a href="http://www.b.com" target="_blank" rel="external">http://www.b.com</a> html 文档中有代码段： 调用www.a.com中的js文件<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;sript src=<span class="symbol">'http</span>:<span class="comment">//www.a.com/jsonp.js'&gt;</span></div><div class="line">  jsonp(&#123;<span class="symbol">'nam</span>e':<span class="symbol">'jinghon</span>g',<span class="symbol">'ag</span>e': <span class="number">21</span>&#125;)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
 <h4 id="jQuery的ajax方法本身就支持jsonp的特性；"><a href="#jQuery的ajax方法本身就支持jsonp的特性；" class="headerlink" title="jQuery的ajax方法本身就支持jsonp的特性；"></a>jQuery的ajax方法本身就支持jsonp的特性；</h4><blockquote>
 <p>如果获取的数据文件存放在远程服务器上（域名不同，也就是跨域获取数据），则需要使用jsonp类型。使用这种类型的话，会创建一个查询字符串参数 callback=? ，这个参数会加在请求的URL后面。服务器端应当在JSON数据前加上回调函数名，以便完成一个有效的JSONP请求。如果要指定回调函数的参数名来取代默认的callback，可以通过设置$.ajax()的jsonp参数。</p>
@@ -430,11 +430,11 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
